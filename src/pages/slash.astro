@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Other pages" description="A collection of pages on this site.">
+  <article class="page">
+    <div class="container">
+      <header class="section">
+        <h1 class="section-heading">Other pages</h1>
+        <p class="section-muted">A collection of slash pages on this site.</p>
+      </header>
+
+      <ul class="slash-list section">
+        <li><a href="/about"><strong>/about</strong></a> — Work history, education, skills, and contact</li>
+        <li><a href="/now"><strong>/now</strong></a> — What I'm doing right now</li>
+        <li><a href="/blog"><strong>/blog</strong></a> — Archive of all posts</li>
+        <li><a href="/projects"><strong>/projects</strong></a> — Apps and side projects</li>
+        <li><a href="/rss.xml"><strong>/rss.xml</strong></a> — RSS feed to subscribe</li>
+      </ul>
+
+      <div class="prose section">
+        <h2 class="subsection-title">What is a slash page?</h2>
+        <p>
+          A slash page is a simple, root-level page like /about, /now, or /uses. For more inspiration, see <a href="https://slashpages.net/" target="_blank" rel="noopener">Slash Pages</a> by Robb Knight.
+        </p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding-bottom: 2rem; }
+  .section-muted { margin-top: -1rem; margin-bottom: 1rem; }
+  .slash-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .slash-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .slash-list a { font-weight: 500; }
+  .subsection-title { font-size: 1.25rem; margin: 1.5rem 0 0.5rem; }
+  .prose p { margin-bottom: 0.5rem; }
+</style>

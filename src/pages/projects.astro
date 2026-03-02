@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { projects } from '../data/profile';
+---
+<BaseLayout title="Projects" description="Apps and projects I've built.">
+  <article class="page">
+    <div class="container container-wide">
+      <header class="section">
+        <h1 class="section-heading">Projects</h1>
+        <p class="section-muted">Apps and open source projects I've built.</p>
+      </header>
+
+      <section class="project-list section">
+        {projects.map((proj) => (
+          <div class="card project-card">
+            <h2 class="project-title">{proj.title}</h2>
+            <p class="project-meta">{proj.period}</p>
+            <p class="project-desc">{proj.description}</p>
+            <a href={proj.github} target="_blank" rel="noopener" class="btn">View on GitHub</a>
+          </div>
+        ))}
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding-bottom: 2rem; }
+  .section-muted { color: var(--text-muted); margin-top: -1rem; margin-bottom: 1.5rem; }
+  .project-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .project-card { padding: 1.5rem; }
+  .project-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
+  .project-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .project-desc { margin-bottom: 1rem; }
+</style>

@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+---
+<BaseLayout title="404 — Page not found" description="Page not found">
+  <div class="not-found-wrap">
+    <div class="not-found">
+      <p class="not-found-tag">Oops, dead link!</p>
+      <h1 class="not-found-title" aria-hidden="true">
+        <span>4</span><span>0</span><span>4</span>
+      </h1>
+      <p class="not-found-subtitle">
+        The page you're looking for either moved, never existed, or is hiding behind a typo.
+      </p>
+      <div class="not-found-actions">
+        <a href="/" class="btn btn-primary">Go home</a>
+        <a href="/blog" class="btn">Blog</a>
+      </div>
+      <div class="not-found-grid">
+        <div>
+          <h2>Popular spots</h2>
+          <ul>
+            <li><a href="/blog">Latest blog posts</a></li>
+            <li><a href="/now">What I'm doing now</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/slash">Other pages</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Still lost?</h2>
+          <ul>
+            <li><a href={`mailto:${profile.email}`}>Say hi via email</a></li>
+            <li><a href="/rss.xml">Subscribe to RSS</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .not-found-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    padding: 2rem 1.25rem;
+  }
+  .not-found {
+    width: 100%;
+    max-width: 36rem;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+  }
+  .not-found-tag {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 9999px;
+  }
+  .not-found-title {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: 1.5rem;
+    font-size: clamp(3.5rem, 12vw, 5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  .not-found-subtitle {
+    margin-top: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+  }
+  .not-found-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .not-found-grid {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    text-align: left;
+  }
+  .not-found-grid h2 {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+  .not-found-grid ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .not-found-grid li {
+    margin-bottom: 0.35rem;
+  }
+  .not-found-grid a:hover {
+    color: var(--accent);
+  }
+  @media (max-width: 480px) {
+    .not-found-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

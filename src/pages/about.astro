@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile, education, aboutBlurb, experiences, skills, achievements } from '../data/profile';
+const lastUpdate = 'March 2025';
+---
+<BaseLayout title="About" description={aboutBlurb}>
+  <article class="page">
+    <div class="container container-wide">
+      <header class="section">
+        <h1 class="section-heading">About</h1>
+        <p class="meta">Last update: {lastUpdate}</p>
+      </header>
+
+      <div class="prose section">
+        <p>
+          I'm Devansh Purwar, a Software Engineer based in India. I specialize in backend systems, microservices, and cloud infrastructure. I care about building reliable, scalable systems and clear automation that reduces toil.
+        </p>
+        <p>
+          My journey started at IIIT Dharwad (B.Tech in Data Science & AI, CGPA 9.1/10) and has taken me through roles at Adbrew and now CommerceIQ, where I work on QA tooling, deployment automation, and AWS infrastructure.
+        </p>
+        <p>
+          If you'd like to talk, reach out by <a href={`mailto:${profile.email}`}>email</a> or <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>.
+        </p>
+      </div>
+
+      <section class="section">
+        <h2 class="subsection-title">Work history</h2>
+        <div class="work-list">
+          {experiences.map((exp) => (
+            <div class="work-item">
+              <div class="work-header">
+                <h3 class="work-role">{exp.role} · {exp.company}</h3>
+                <span class="work-meta">{exp.period} · {exp.location}</span>
+              </div>
+              <ul class="work-points">
+                {exp.points.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="subsection-title">Education</h2>
+        <p><strong>{education.school}</strong></p>
+        <p class="muted">{education.degree} — {education.period}</p>
+        <p class="muted">CGPA: {education.cgpa}</p>
+      </section>
+
+      <section class="section">
+        <h2 class="subsection-title">Technical skills</h2>
+        <p><strong>Languages:</strong> {skills.languages.join(', ')}</p>
+        <p><strong>Cloud & tools:</strong> {skills.cloud.join(', ')}</p>
+        <p><strong>Frameworks:</strong> {skills.frameworks.join(', ')}</p>
+      </section>
+
+      <section class="section">
+        <h2 class="subsection-title">Achievements & activities</h2>
+        <ul class="achievement-list">
+          {achievements.map((a) => (
+            <li><strong>{a.title}</strong> — {a.detail}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="section" id="contact">
+        <h2 class="subsection-title">Contact</h2>
+        <p><a href={`mailto:${profile.email}`}>{profile.email}</a> · <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a> · <a href={profile.github} target="_blank" rel="noopener">GitHub</a></p>
+      </section>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding-bottom: 2rem; }
+  .meta { font-size: 0.875rem; color: var(--text-muted); margin-top: -1rem; }
+  .prose p { margin-bottom: 1rem; }
+  .subsection-title { font-size: 1.25rem; margin-bottom: 1rem; }
+  .work-list { display: flex; flex-direction: column; gap: 2rem; }
+  .work-header { margin-bottom: 0.5rem; }
+  .work-role { font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .work-meta { font-size: 0.875rem; color: var(--text-muted); }
+  .work-points { margin: 0; padding-left: 1.25rem; }
+  .work-points li { margin-bottom: 0.5rem; }
+  .muted { color: var(--text-muted); font-size: 0.9375rem; }
+  .achievement-list { padding-left: 1.25rem; }
+  .achievement-list li { margin-bottom: 0.5rem; }
+</style>

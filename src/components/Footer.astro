@@ -1,0 +1,44 @@
+---
+import { profile } from '../data/profile';
+const year = new Date().getFullYear();
+---
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-social">
+      <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+      <a href={`mailto:${profile.email}`} aria-label="Email">Email</a>
+      <a href="/slash">Other pages</a>
+    </div>
+    <p class="footer-copy">© {year} Devansh Purwar</p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+  }
+  .footer-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem;
+  }
+  .footer-social {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+  .footer-social a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+  .footer-social a:hover {
+    color: var(--accent);
+  }
+  .footer-copy {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+</style>

@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { profile } from '../data/profile';
+const lastUpdate = 'March 2025';
+---
+<BaseLayout title="Now" description="What Devansh is doing now.">
+  <article class="page">
+    <div class="container">
+      <header class="section">
+        <h1 class="section-heading">Now</h1>
+        <p class="meta">Last update: {lastUpdate}</p>
+      </header>
+
+      <div class="prose section">
+        <h2 class="subsection-title">What I'm doing now</h2>
+        <ul>
+          <li>Working as a Software Engineer at CommerceIQ on QA tooling, deployment automation, and AWS infrastructure.</li>
+          <li>Thinking about system design, reliability, and how to make releases safer and faster.</li>
+          <li>Occasionally building side projects (e.g. Itinera AI, WhoOwesWhat) and solving problems on LeetCode/GeeksforGeeks.</li>
+        </ul>
+
+        <h2 class="subsection-title">What I care about</h2>
+        <p>
+          Systems that are reliable and observable. Automation that actually reduces toil. Clear APIs and documentation so others can build on top. Learning in public when I can.
+        </p>
+
+        <h2 class="subsection-title">What is this page?</h2>
+        <p>
+          A "now" page is a snapshot of what someone is focused on right now — inspired by <a href="https://sive.rs/now" target="_blank" rel="noopener">Derek Sivers</a>. You can find more at <a href="https://nownownow.com/" target="_blank" rel="noopener">nownownow.com</a>.
+        </p>
+        <p>
+          For more about my background and work history, see my <a href="/about">about</a> page or <a href={profile.linkedin} target="_blank" rel="noopener">LinkedIn</a>.
+        </p>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .page { padding-bottom: 2rem; }
+  .meta { font-size: 0.875rem; color: var(--text-muted); margin-top: -1rem; }
+  .prose p { margin-bottom: 1rem; }
+  .subsection-title { font-size: 1.25rem; margin-bottom: 0.75rem; margin-top: 1.5rem; }
+  .prose ul { margin-bottom: 1rem; padding-left: 1.25rem; }
+  .prose li { margin-bottom: 0.35rem; }
+</style>

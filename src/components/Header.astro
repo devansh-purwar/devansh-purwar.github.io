@@ -1,0 +1,113 @@
+---
+import { profile } from '../data/profile';
+const currentPath = Astro.url.pathname;
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/about', label: 'About' },
+  { href: '/now', label: 'Now' },
+  { href: '/slash', label: 'Other pages' },
+];
+---
+<header class="header">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="header-inner">
+    <a href="/" class="logo">{profile.name}</a>
+    <nav class="nav" aria-label="Main">
+      <ul class="nav-list">
+        {navLinks.map(({ href, label }) => {
+          const isActive = currentPath === href || (href !== '/' && currentPath.startsWith(href));
+          return (
+            <li>
+              <a href={href} class={isActive ? 'active' : ''}>{label}</a>
+            </li>
+          );
+        })}
+      </ul>
+    </nav>
+    <div class="social">
+      <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .logo {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--text);
+  }
+  .logo:hover {
+    color: var(--accent);
+  }
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+  }
+  .nav a {
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+  }
+  .nav a:hover,
+  .nav a.active {
+    color: var(--accent);
+  }
+  .social {
+    display: flex;
+    gap: 1rem;
+  }
+  .social a {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+  .social a:hover {
+    color: var(--accent);
+  }
+  .skip-link {
+    position: absolute;
+    top: -3rem;
+    left: 1rem;
+    z-index: 100;
+    padding: 0.5rem 0.75rem;
+    background: var(--accent);
+    color: white;
+    font-size: 0.875rem;
+    border-radius: var(--radius);
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 1rem;
+    outline: 2px solid var(--text);
+    outline-offset: 2px;
+  }
+  @media (max-width: 640px) {
+    .header-inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nav-list {
+      gap: 1rem;
+    }
+  }
+</style>

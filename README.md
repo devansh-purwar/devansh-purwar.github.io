@@ -17,7 +17,15 @@ Open [http://localhost:4321](http://localhost:4321).
 npm run build
 ```
 
-Output is in `dist/`. For GitHub Pages, either push the contents of `dist/` to a `gh-pages` branch or use a GitHub Action that builds Astro and publishes `dist/`.
+Output is in `dist/`.
+
+## Deploy to GitHub Pages
+
+1. **Push the repo** (including `.github/workflows/deploy.yml`) to GitHub. The workflow runs on every push to `main`. If your default branch is `master`, edit the workflow and change `branches: [main]` to `branches: [master]`.
+
+2. **Turn on GitHub Pages**: In the repo go to **Settings → Pages**. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+
+3. After the workflow runs, the site will be live at **https://devansh-purwar.github.io** (for a repo named `devansh-purwar.github.io`).
 
 ## Add your CV
 

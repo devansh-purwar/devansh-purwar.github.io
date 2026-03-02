@@ -1,10 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { profile } from '../data/profile';
-const lastUpdate = 'March 2025';
+const lastUpdate = 'March 2026';
 ---
 <BaseLayout title="Now" description="What Devansh is doing now.">
-  <article class="page">
+  <article class="page page-tight">
     <div class="container">
       <header class="section">
         <h1 class="section-heading">Now</h1>
@@ -19,11 +19,13 @@ const lastUpdate = 'March 2025';
           <li>Occasionally building side projects (e.g. Itinera AI, WhoOwesWhat) and solving problems on LeetCode/GeeksforGeeks.</li>
         </ul>
 
+        <hr class="section-hr" aria-hidden="true" />
         <h2 class="subsection-title">What I care about</h2>
         <p>
           Systems that are reliable and observable. Automation that actually reduces toil. Clear APIs and documentation so others can build on top. Learning in public when I can.
         </p>
 
+        <hr class="section-hr" aria-hidden="true" />
         <h2 class="subsection-title">What is this page?</h2>
         <p>
           A "now" page is a snapshot of what someone is focused on right now — inspired by <a href="https://sive.rs/now" target="_blank" rel="noopener">Derek Sivers</a>. You can find more at <a href="https://nownownow.com/" target="_blank" rel="noopener">nownownow.com</a>.

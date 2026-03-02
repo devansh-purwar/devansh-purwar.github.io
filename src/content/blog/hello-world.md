@@ -1,7 +1,7 @@
 ---
 title: Hello world
 description: First post on the new blog
-pubDate: 2025-03-02
+pubDate: 2026-03-02
 draft: false
 ---
 

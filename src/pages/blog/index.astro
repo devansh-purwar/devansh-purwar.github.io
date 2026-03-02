@@ -6,7 +6,7 @@ const posts = await getCollection('blog', ({ data }) => !data.draft);
 const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <BaseLayout title="Blog" description="Devansh Purwar's blog — notes and writing.">
-  <article class="page">
+  <article class="page page-tight">
     <div class="container">
       <header class="section">
         <h1 class="section-heading">Blog</h1>

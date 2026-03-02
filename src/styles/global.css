@@ -10,6 +10,18 @@
   --radius: 0.5rem;
   --radius-lg: 1rem;
   --font-mono: "Roboto Mono", ui-monospace, monospace;
+  --footer-text: #5c5256;
+  --contact-links: #5c5256;
+}
+
+.page-tight .section {
+  padding: 1.5rem 0;
+}
+.page-tight header.section {
+  padding-top: 0;
+}
+.page-tight hr.section-hr {
+  margin: 1rem 0;
 }
 
 * {
@@ -47,6 +59,13 @@ h1, h2, h3 {
   font-family: var(--font-mono);
   font-weight: 600;
   line-height: 1.3;
+  color: var(--accent);
+}
+
+hr.section-hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2rem 0;
 }
 
 img {

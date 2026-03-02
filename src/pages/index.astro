@@ -13,29 +13,26 @@ const recentPosts = allPosts
     <div class="container container-wide">
       <!-- Hero: name + short intro + links to about/now (Aman-style) -->
       <header class="hero section">
-        <div class="hero-heading-row">
-          <h1 class="hero-title">{profile.name}</h1>
-          <a href="/rss.xml" class="rss-link" aria-label="RSS Feed" title="RSS Feed">
-            <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z" />
-              <path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z" />
-              <circle cx="6" cy="18" r="2" />
-            </svg>
-            <span class="rss-text">RSS Feed</span>
-          </a>
-        </div>
-        <p class="hero-tagline">{profile.tagline}</p>
-        <div class="hero-text">
-          <p>
-            I'm a Software Engineer with 2+ years of experience, currently at CommerceIQ. I build scalable microservices, automation, and cloud infrastructure. I enjoy solving complex problems and have a strong foundation in algorithms and system design.
-          </p>
-          <p>
-            See what I'm up to on my <a href="/now">now</a> page or learn more on my <a href="/about">about</a> page.
-          </p>
-        </div>
-        <div class="hero-links">
-          <a href={profile.cvUrl} class="btn btn-primary" target="_blank" rel="noopener">Download CV</a>
-          <a href="/about#contact" class="btn">Contact</a>
+        <div class="hero-inner">
+          <div class="hero-content">
+            <h1 class="hero-title">{profile.name}</h1>
+            <p class="hero-tagline">{profile.tagline}</p>
+            <div class="hero-text">
+              <p>
+                I'm a Software Engineer with 2+ years of experience, currently at CommerceIQ. I build scalable microservices, automation, and cloud infrastructure. I enjoy solving complex problems and have a strong foundation in algorithms and system design.
+              </p>
+              <p>
+                See what I'm up to on my <a href="/now">now</a> page or learn more on my <a href="/about">about</a> page.
+              </p>
+            </div>
+            <div class="hero-links">
+              <a href={profile.cvUrl} class="btn btn-primary" target="_blank" rel="noopener">Download CV</a>
+              <a href="/about#contact" class="btn">Contact</a>
+            </div>
+          </div>
+          <div class="hero-image-wrap">
+            <img src="/2.JPG" alt={`${profile.name} — ${profile.tagline}`} class="hero-image" width="320" height="320" />
+          </div>
         </div>
       </header>
 
@@ -88,6 +85,39 @@ const recentPosts = allPosts
   .hero {
     padding-top: 3rem;
   }
+  .hero-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .hero-image-wrap {
+    flex-shrink: 0;
+    order: 2;
+  }
+  .hero-image {
+    width: 320px;
+    height: 320px;
+    border-radius: 1.25rem;
+    object-fit: cover;
+    border: 2px solid var(--border);
+  }
+  @media (max-width: 640px) {
+    .hero-image-wrap {
+      order: 0;
+      width: 100%;
+    }
+    .hero-image {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      aspect-ratio: 1;
+    }
+  }
   .hero-title {
     font-size: clamp(1.75rem, 4vw, 2.25rem);
     margin-bottom: 0.25rem;
@@ -116,27 +146,6 @@ const recentPosts = allPosts
     list-style: none;
     padding: 0;
     margin: 0;
-  }
-  .hero-heading-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  .rss-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.875rem;
-    color: var(--text-muted);
-  }
-  .rss-link:hover {
-    color: var(--accent);
-  }
-  .rss-icon {
-    flex-shrink: 0;
-    color: var(--accent);
   }
   .section-hr {
     border: none;

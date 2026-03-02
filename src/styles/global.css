@@ -14,6 +14,9 @@
   --contact-links: #5c5256;
 }
 
+.page-tight {
+  padding-top: 2.5rem;
+}
 .page-tight .section {
   padding: 1.5rem 0;
 }

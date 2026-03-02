@@ -31,6 +31,10 @@ Output is in `dist/`.
 
 Put `devansh_cv.pdf` in the `public/` folder so the “Download CV” link works.
 
+## Profile image (home page)
+
+Put your photo in `public/` as **`profile.jpg`** (or `profile.png` — then change the `src` in `src/pages/index.astro` from `/profile.jpg` to `/profile.png`). It appears as a circular image in the hero; recommended size at least 320×320px.
+
 ## Blog posts
 
 Add `.md` or `.mdx` files in `src/content/blog/` with frontmatter:

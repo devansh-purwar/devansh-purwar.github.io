@@ -1,8 +1,12 @@
 import type { APIRoute } from 'astro';
 
+const site = 'https://devansh-purwar.github.io';
+
 const robots = `
 User-agent: *
 Allow: /
+
+Sitemap: ${site}/sitemap.xml
 `.trim();
 
 export const GET: APIRoute = () =>

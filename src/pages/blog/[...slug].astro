@@ -9,8 +9,17 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const site = Astro.site?.href ?? 'https://devansh-purwar.github.io';
+const canonicalURL = `${site}/blog/${post.slug}/`;
 ---
-<BaseLayout title={post.data.title} description={post.data.description ?? post.data.title}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description ?? post.data.title}
+  canonicalURL={canonicalURL}
+  pubDate={post.data.pubDate}
+  modDate={post.data.updatedDate}
+  ogImage={`${site}/2.JPG`}
+>
   <article class="page post">
     <div class="container container-wide">
       <header class="post-header section">

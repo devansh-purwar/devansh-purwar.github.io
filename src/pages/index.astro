@@ -7,8 +7,20 @@ const allPosts = await getCollection('blog', ({ data }) => !data.draft);
 const recentPosts = allPosts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 5);
+
+const site = 'https://devansh-purwar.github.io';
+const personSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  jobTitle: profile.tagline,
+  url: site,
+  image: `${site}/2.JPG`,
+  sameAs: [profile.github, profile.linkedin],
+  email: profile.email,
+});
 ---
-<BaseLayout title={profile.name} description={aboutBlurb}>
+<BaseLayout title={profile.name} description={aboutBlurb} jsonLd={personSchema}>
   <article class="page">
     <div class="container container-wide">
       <!-- Hero: name + short intro + links to about/now (Aman-style) -->

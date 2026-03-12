@@ -13,11 +13,36 @@ const personSchema = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: profile.name,
+  alternateName: ['devansh purwar', 'Devansh', 'devanshpurwar'],
   jobTitle: profile.tagline,
   url: site,
   image: `${site}/2.JPG`,
   sameAs: [profile.github, profile.linkedin],
   email: profile.email,
+  worksFor: {
+    '@type': 'Organization',
+    name: 'CommerceIQ',
+  },
+  alumniOf: {
+    '@type': 'EducationalOrganization',
+    name: 'Indian Institute of Information Technology, Dharwad',
+  },
+  knowsAbout: [
+    'Software Engineering',
+    'Java',
+    'Spring Boot',
+    'Python',
+    'AWS',
+    'Microservices',
+    'System Design',
+    'Cloud Infrastructure',
+    'Docker',
+    'Kubernetes',
+  ],
+  nationality: {
+    '@type': 'Country',
+    name: 'India',
+  },
 });
 ---
 <BaseLayout title={profile.name} description={aboutBlurb} jsonLd={personSchema}>

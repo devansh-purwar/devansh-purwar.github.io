@@ -3,6 +3,7 @@ title: Singleton Design Pattern vs Singleton Bean in Spring — Are They the Sam
 description: Clearing up the confusion between the Singleton design pattern and Spring's singleton bean scope — scope, thread safety, and when to use which.
 pubDate: 2026-03-04
 draft: false
+tags: ["Java", "Spring Boot", "Design Patterns", "Backend"]
 ---
 
 If you already know the Singleton Design Pattern and then start learning Spring Framework or Spring Boot, you might get confused.

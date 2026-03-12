@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { projects } from '../data/profile';
 ---
-<BaseLayout title="Projects" description="Apps and projects I've built.">
+<BaseLayout title="Projects" description="Projects and apps built by Devansh Purwar — full-stack, microservices, and cloud infrastructure.">
   <article class="page page-tight">
     <div class="container container-wide">
       <header class="section">
@@ -16,7 +16,12 @@ import { projects } from '../data/profile';
             <h2 class="project-title">{proj.title}</h2>
             <p class="project-meta">{proj.period}</p>
             <p class="project-desc">{proj.description}</p>
-            <a href={proj.github} target="_blank" rel="noopener" class="btn">View on GitHub</a>
+            <div class="project-actions">
+              {'website' in proj && proj.website && (
+                <a href={proj.website} target="_blank" rel="noopener" class="btn btn-primary">Visit website</a>
+              )}
+              <a href={proj.github} target="_blank" rel="noopener" class="btn">View on GitHub</a>
+            </div>
           </div>
         ))}
       </section>
@@ -32,4 +37,5 @@ import { projects } from '../data/profile';
   .project-title { font-size: 1.25rem; margin-bottom: 0.25rem; }
   .project-meta { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 0.75rem; }
   .project-desc { margin-bottom: 1rem; }
+  .project-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 </style>

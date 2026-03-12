@@ -59,6 +59,13 @@ export const projects = [
     github: "https://github.com/devansh-purwar",
     description: "Architected and developed a full-stack expense-splitting application using Spring Boot and React, implementing the Strategy Pattern for 4 split calculation methods (Equal, Exact, Percentage, Shares) and an event-sourcing approach for idempotent balance calculations. Built RESTful APIs with Spring Data JPA managing 7 entities across User, Group, and Expense domains.",
   },
+  {
+    title: "Kalpi Handmade",
+    period: "2025",
+    github: "https://github.com/devansh-purwar/kalpi_handmade",
+    website: "https://kalpihandmade.com/",
+    description: "Marketing website for Balaji Handmade Paper — an eco-friendly handmade paper manufacturer in Kalpi, Uttar Pradesh. Showcases their craft, products (seed paper, botanical paper, art paper), and contact.",
+  },
 ];
 
 export const skills = {

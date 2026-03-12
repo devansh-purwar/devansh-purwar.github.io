@@ -4,8 +4,29 @@ import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog', ({ data }) => !data.draft);
 const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const siteRaw = Astro.site?.href ?? 'https://devansh-purwar.github.io';
+const site = siteRaw.replace(/\/$/, '');
+
+const blogListSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Blog — Devansh Purwar',
+  description: "Devansh Purwar's blog — technical articles on software engineering, system design, and cloud infrastructure.",
+  url: `${site}/blog`,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: sorted.length,
+    itemListElement: sorted.map((post, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `${site}/blog/${post.slug}/`,
+      name: post.data.title,
+    })),
+  },
+});
 ---
-<BaseLayout title="Blog" description="Devansh Purwar's blog — notes and writing.">
+<BaseLayout title="Blog" description="Devansh Purwar's blog — technical articles on software engineering, system design, and cloud infrastructure." jsonLd={blogListSchema}>
   <article class="page page-tight">
     <div class="container container-wide">
       <header class="section">
@@ -20,6 +41,13 @@ const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.va
               <a href={`/blog/${post.slug}`}>{post.data.title}</a>
               {post.data.description && (
                 <p class="post-list-desc">{post.data.description}</p>
+              )}
+              {post.data.tags && post.data.tags.length > 0 && (
+                <div class="post-list-tags">
+                  {post.data.tags.map((tag) => (
+                    <span class="post-list-tag">{tag}</span>
+                  ))}
+                </div>
               )}
             </div>
             <time datetime={post.data.pubDate.toISOString()} class="post-list-date">
@@ -50,5 +78,13 @@ const sorted = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.va
   .post-list-content { flex: 1; min-width: 0; }
   .post-list a { font-weight: 500; }
   .post-list-desc { font-size: 0.9375rem; color: var(--text-muted); margin: 0.25rem 0 0; line-height: 1.5; }
+  .post-list-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; margin-top: 0.4rem; }
+  .post-list-tag {
+    font-size: 0.75rem;
+    padding: 0.1rem 0.45rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 0.2rem;
+  }
   .post-list-date { font-size: 0.875rem; color: var(--text-muted); flex-shrink: 0; white-space: nowrap; }
 </style>

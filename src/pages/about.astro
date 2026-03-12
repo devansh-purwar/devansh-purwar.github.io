@@ -2,8 +2,33 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { profile, education, aboutBlurb, experiences, skills, achievements } from '../data/profile';
 const lastUpdate = 'March 2026';
+
+const site = 'https://devansh-purwar.github.io';
+const profileSchema = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  mainEntity: {
+    '@type': 'Person',
+    name: profile.name,
+    alternateName: ['devansh purwar', 'devanshpurwar'],
+    jobTitle: profile.tagline,
+    url: site,
+    image: `${site}/2.JPG`,
+    email: profile.email,
+    sameAs: [profile.github, profile.linkedin],
+    worksFor: experiences.map((exp) => ({
+      '@type': 'Organization',
+      name: exp.company,
+    })),
+    alumniOf: {
+      '@type': 'EducationalOrganization',
+      name: education.school,
+    },
+    knowsAbout: [...skills.languages, ...skills.cloud, ...skills.frameworks],
+  },
+});
 ---
-<BaseLayout title="About" description={aboutBlurb}>
+<BaseLayout title="About" description={`Devansh Purwar — ${aboutBlurb}`} jsonLd={profileSchema}>
   <article class="page about-page">
     <div class="container container-wide">
       <header class="section">
